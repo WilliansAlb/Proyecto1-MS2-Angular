@@ -1,0 +1,22 @@
+<select class="form-select" aria-label="Default select example">
+	<option selected>Sin prioridad elegida</option>
+	<option value="1">Horario de contratación de profesores</option>
+	<option value="2">Materias disponibles</option>
+	<option value="3">Capacidad de salones</option>
+</select>
+<div class="generate-schedule" >
+	<div class="schedule-column" *ngFor="let day of ['Periodo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']; let i = index">
+		{{day}}
+	</div>
+<ng-container *ngFor="let period of periods">
+<div class="schedule-part period">
+<span class="time">{{period.start}}</span>
+<span class="separtor">-</span>
+<span class="time">{{period.end}}</span>
+</div>
+<div class="schedule-part curse"></div>
+<div class="schedule-part curse"></div>
+<div class="schedule-part curse"></div>
+<div class="schedule-part curse"></div>
+<div class="schedule-part curse"></div>
+</ng-container>

@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital@1&family=Poppins:wght@200&display=swap');
+
+* {
+	font-family: "Inter", -apple-system, "Nunito", BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.separator{
+	color: grey;
+	font-size: 0.5em;
+}
+
+.time{
+	color: whitesmoke;
+	font-size: 1.25vw;
+}
+
+.schedule-column {
+	background-color: white;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	border: 1px skyblue solid;
+}
+
+.schedule-part {
+	width: 100%;
+	height: 50px;
+	background-color: grey;
+	border: 1px rgb(49, 0, 117) solid;
+}
+
+.period {
+	background-color: #118AB2;
+	color: white;
+	display: flex;
+	justify-content: space-evenly;
+	justify-items: center;
+	align-items: center;
+	font-weight: bold;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.curse {
+	background-color: #06D6A0;
+}
+
+.generate-schedule {
+	display: grid;
+	grid-template-columns: 10% 18% 18% 18% 18% 18%;
+	max-height: 85%;
+	overflow-y: auto;
+}
+
+.warning {
+	background-color: #FFD166;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px purple;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: grey;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #000;
+}
