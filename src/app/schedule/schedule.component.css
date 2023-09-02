@@ -45,13 +45,13 @@
 }
 
 .curse {
-	background-color: #06D6A0;
+	background-color: lightblue;
 }
 
 .generate-schedule {
 	display: grid;
-	grid-template-columns: 10% 18% 18% 18% 18% 18%;
-	max-height: 85%;
+	grid-template-columns: 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3% 4.3%;
+	max-height: 87%;
 	overflow-y: auto;
 }
 
@@ -59,11 +59,110 @@
 	background-color: #FFD166;
 }
 
+#schedule-table{
+	overflow-x: scroll;
+	overflow-y: scroll;
+	max-height: 87%;
+}
 
+.table-bordered>:not(caption)>*>*{
+	border-width: 3px 3px !important;
+}
+
+thead{
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.label-period{
+	position: sticky;
+	left: 0;
+}
+
+.break-div{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.curse-div{
+	display: grid;
+	grid-template-columns: 67% 33%;
+}
+
+.teacher{
+	font-size: 0.6em;
+}
+.students{
+	font-size: 1em;
+}
+
+.code{
+	font-size: 0.8em;
+}
+
+.name{
+	font-weight: bold;
+}
+
+.status{
+	font-size: 1em;
+}
+
+.data-assign{
+	display: flex;
+	flex-direction: column;
+}
+
+.curse-div span{
+	margin: 3px;
+}
+
+th{
+	text-align: center;
+	vertical-align: middle;
+}
+
+.sistemas{
+	background-color: orange;
+}
+
+.check{
+	background-color: #C1E1C1;
+}
+
+.warning{
+	background-color: #FDFD96;
+}
+
+.error{
+	background-color: #FF6961;
+}
+
+.period-cell, .salon-cell{
+	height: 110px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.break{
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.period-cell{
+	min-width: 100px;
+}
+
+.salon-cell{
+	min-width: 200px;
+}
 
 /* width */
 ::-webkit-scrollbar {
 	width: 5px;
+	height: 5px;
 }
 
 /* Track */
@@ -74,11 +173,25 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: grey;
+	background: yellow;
 	border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #000;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover, .status:hover{
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.welcome-schedule{
+	background-color: navajowhite;
+	text-align: center;
 }
