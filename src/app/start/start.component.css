@@ -1,0 +1,16 @@
+.carousel-div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 93%;
+}
+
+.carousel{
+	width: 80%;
+	margin: auto;
+}
+
+.carousel-item img{
+	margin: auto;
+}

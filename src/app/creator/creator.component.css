@@ -1,0 +1,29 @@
+.curse-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+}
+
+.careers{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-control{
+	text-align: right;
+}
+
+.grid-priorities{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	width: 95%;
+}
+
+.configuration-priorities, .selection-priorities{
+	width: 100%;
+	padding: 5px;
+}

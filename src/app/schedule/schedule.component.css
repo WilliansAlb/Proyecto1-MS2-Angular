@@ -62,7 +62,9 @@
 #schedule-table{
 	overflow-x: scroll;
 	overflow-y: scroll;
-	max-height: 87%;
+	max-height: 80%;
+	width: 96%;
+	margin: auto;
 }
 
 .table-bordered>:not(caption)>*>*{
@@ -125,7 +127,11 @@ th{
 }
 
 .sistemas{
-	background-color: orange;
+	background-color: #ff9900;
+}
+
+.civil{
+	background-color: #ff0000;
 }
 
 .check{
@@ -173,13 +179,13 @@ th{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: yellow;
+	background: navajowhite;
 	border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #000;
+	background: red;
 }
 
 a{
@@ -192,6 +198,14 @@ a:hover, .status:hover{
 }
 
 .welcome-schedule{
-	background-color: navajowhite;
+	color: navajowhite;
 	text-align: center;
+}
+
+.text-muted{
+	color: #8d969e!important;
+}
+
+.table{
+	margin: 0 !important;
 }

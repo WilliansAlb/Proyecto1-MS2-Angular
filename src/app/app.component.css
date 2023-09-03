@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .background {
 	background: rgb(17, 138, 178);
 	background: radial-gradient(circle, rgba(17, 138, 178, 1) 0%, rgba(7, 59, 76, 1) 100%);
@@ -14,9 +16,17 @@
 	align-items: center;
 }
 
+#name-brand{
+	font-family: 'Bebas Neue', sans-serif;
+}
+
+#name-brand img{
+	width:1em;
+}
+
 .main-content {
-	width: 90%;
-	height: 90%;
+	width: 95%;
+	height: 95%;
 	/* From https://css.glass */
 	background: rgba(255, 255, 255, 0.19);
 	border-radius: 16px;

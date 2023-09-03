@@ -1,0 +1,189 @@
+<ng-container *ngIf="curses.length > 0;then exist else empty"></ng-container>
+<ng-template #exist>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<div class="curse-container">
+		<p class="h2">Prioridades</p>
+		<div class="grid-priorities">
+			<div class="configuration-priorities">
+				<p class="h4">Configuracion</p>
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseOne" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								Por horario de contratación de Profesores
+							</button>
+						</h2>
+						<div id="flush-collapseOne" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
+										name="hiringHours" id="hiringHours" value="100"> al peso del curso que
+									necesite de verificar horarios de contratación.</p>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseTwo" aria-expanded="false"
+								aria-controls="flush-collapseTwo">
+								Por capacidad de salones
+							</button>
+						</h2>
+						<div id="flush-collapseTwo" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
+										name="salonCapacity" id="salonCapacity" value="100"> al peso del curso que
+									necesite de verificar la capacidad de un unico salon.</p>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseThree" aria-expanded="false"
+								aria-controls="flush-collapseThree">
+								Valor por asignacion
+							</button>
+						</h2>
+						<div id="flush-collapseThree" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">
+									El número total de asignados se multiplicará por <input type="number"
+										name="studentsAssigned" id="studentsAssigned" value="5"> para obtener el peso
+									final
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseFour" aria-expanded="false"
+								aria-controls="flush-collapseThree">
+								Valor por carrera
+							</button>
+						</h2>
+						<div id="flush-collapseFour" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">Valor de prioridad que se le puede asignar a una carrera <span
+										class="text-muted">(entre 0 y 5)</span></p>
+								<div class="careers">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">Ingenieria en Sistemas</span>
+										<input type="number" class="form-control" value="0" max="5" min="0"
+											placeholder="Prioridad" aria-label="Prioridad"
+											aria-describedby="basic-addon1">
+									</div>
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">Ingenieria Civil</span>
+										<input type="number" class="form-control" value="0" max="5" min="0"
+											placeholder="Prioridad" aria-label="Prioridad"
+											aria-describedby="basic-addon1">
+									</div>
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">Ingenieria Mécanica</span>
+										<input type="number" class="form-control" value="0" max="5" min="0"
+											placeholder="Prioridad" aria-label="Prioridad"
+											aria-describedby="basic-addon1">
+									</div>
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">Ingenieria Industrial</span>
+										<input type="number" class="form-control" value="0" max="5" min="0"
+											placeholder="Prioridad" aria-label="Prioridad"
+											aria-describedby="basic-addon1">
+									</div>
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">Ingenieria Mécanica
+											Industrial</span>
+										<input type="number" class="form-control" value="0" max="5" min="0"
+											placeholder="Prioridad" aria-label="Prioridad"
+											aria-describedby="basic-addon1">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseFive" aria-expanded="false"
+								aria-controls="flush-collapseThree">
+								Valor por profesor único
+							</button>
+						</h2>
+						<div id="flush-collapseFive" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
+										name="teacherAssign" id="teacherAssign" value="100"> por el inverso del total de
+									profesores que pueden dar el curso, para el peso del mismo.</p>
+								<h2>$$peso_{{'{profesores}'}} = {{'{'}}100 * 1 \over c_{{'{total}'}} {{'}'}}.$$</h2>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseSix" aria-expanded="false"
+								aria-controls="flush-collapseSix">
+								Valor por salón único
+							</button>
+						</h2>
+						<div id="flush-collapseSix" class="accordion-collapse collapse"
+							data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
+										name="salonAssign" id="salonAssign" value="100"> por el inverso del total de
+									salones
+									donde se puede impartir el curso, para el peso del mismo.</p>
+								<h2>$$peso_{{'{salon}'}} = {{'{'}}100 * 1 \over s_{{'{total}'}} {{'}'}}.$$</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="selection-priorities">
+				<p class="h4">Colocale nombre al horario generado</p>
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon1">Opcional</span>
+					<input type="text" class="form-control" placeholder="Nombre del horario resultante"
+						aria-label="Nombre del horario resultante" aria-describedby="basic-addon1">
+				</div>
+				<small class="text-muted">**Por defecto el horario se generara con la hora actual y el nombre será una mezcla de la palabra <mark>horario, fecha y hora</mark></small>
+				<p class="h4">Elige una prioridad</p>
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect01">Prioridades</label>
+					<select class="form-select" id="inputGroupSelect01">
+						<option selected>Selecciona...</option>
+						<option value="1">Ninguna</option>
+						<option value="2">Por horario de contratación</option>
+						<option value="3">Por capacidad de salones</option>
+					</select>
+				</div>
+				<p class="h4">Elige cursos prioritarios</p>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Ingresa el id del curso"
+						aria-label="Id del curso" aria-describedby="button-addon2">
+					<button class="btn btn-secondary" type="button" id="button-addon2">🔍</button>
+				</div>
+				<div class="d-grid">
+					<button class="btn btn-primary" type="button">GENERAR</button>
+				  </div>
+			</div>
+		</div>
+	</div>
+</ng-template>
+<ng-template #empty>
+	<div class="curse-container">
+		<img width="400px" src="https://cdn-icons-png.flaticon.com/512/7887/7887083.png" alt="Information">
+		<p class="lead">No puedes generar un horario sin antes <mark>cargar cursos</mark></p>
+		<a href="loader" class="btn btn-info">CARGA CURSOS</a>
+	</div>
+</ng-template>
