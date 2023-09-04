@@ -1,10 +1,12 @@
 <div class="loader-div">
-	<p class="h2">Carga de datos</p>
 	<div class="grid-loader">
 		<div class="mb-3">
 			<p class="h4">Inserta mediante archivo JSON</p>
-			<input class="form-control" type="file" id="formFile">
-			<small class="text-muted">**A la derecha vez ejemplos de archivos json</small>
+			<div class="input-group mb-3">
+				<input class="form-control" (change)="onFileChange($event)" type="file" id="formFile">
+				<button type="button" class="btn btn-primary" (click)="loaderFile()">SUBIR</button>
+			</div>
+			<span class="visually-hidden" id="file-text"></span>
 			<div class="">
 				<p class="h4">Inserta mediante formulario</p>
 				<input (change)="onRadioChangeInsert($event)" value="materia" type="radio" class="btn-check"
@@ -91,7 +93,8 @@
 					<input type="text" class="form-control" placeholder="Alter del profesor"
 						aria-label="Alter del profesor" aria-describedby="alter-teacher">
 				</div>
-				<small class="text-muted" style="color: grey !important;">**La hora de entrada y salida debe estar en formato militar 0000 -
+				<small class="text-muted" style="color: grey !important;">**La hora de entrada y salida debe estar en
+					formato militar 0000 -
 					2400</small>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="start-teacher">Entrada</span>
@@ -123,13 +126,13 @@
 			<div *ngIf="insert=='salon'" class="insert-curse">
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="name-salon">Salon</span>
-					<input type="text" class="form-control" placeholder="Nombre del salon"
-						aria-label="Nombre del salon" aria-describedby="name-salon">
+					<input type="text" class="form-control" placeholder="Nombre del salon" aria-label="Nombre del salon"
+						aria-describedby="name-salon">
 				</div>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="code-salon">Codigo</span>
-					<input type="text" class="form-control" placeholder="Codigo del salon"
-						aria-label="Codigo del salon" aria-describedby="code-salon">
+					<input type="text" class="form-control" placeholder="Codigo del salon" aria-label="Codigo del salon"
+						aria-describedby="code-salon">
 				</div>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="capacity-salon">Capacidad</span>
@@ -142,6 +145,7 @@
 			</div>
 		</div>
 		<div class="example-loader">
+			<p class="h3" style="color: white; text-align: center;">Ejemplos de formatos</p>
 			<div class="bd-example m-0 border-0 selector-example">
 				<input (change)="onRadioChange($event)" value="materia" type="radio" class="btn-check"
 					name="options-base" id="option5" autocomplete="off" checked>

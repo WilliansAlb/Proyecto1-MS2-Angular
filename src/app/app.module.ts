@@ -7,6 +7,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { CreatorComponent } from './creator/creator.component';
 import { StartComponent } from './start/start.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StartComponent } from './start/start.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
