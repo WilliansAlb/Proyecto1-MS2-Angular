@@ -67,3 +67,7 @@ pre{
 	background-color: #002f5f;
 	padding: 1em;
 }
+
+.toast:not(.show){
+	display: block !important;
+}

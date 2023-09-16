@@ -12,9 +12,9 @@
 		</thead>
 		<tbody>
 			<ng-container *ngFor="let period of periods; let i = index">
-				<tr id="period{{i}}" *ngIf="i!=6">
+				<tr id="period{{i}}">
 					<td scope="row" class="period-cell table-dark label-period">{{period.start}} - {{period.end}}</td>
-					<td class="salon-cell table-primary" *ngFor="let salon of salons; let s = index" id="salon{{s+1}}">
+					<td class="salon-cell table-primary" *ngFor="let salon of salons; let s = index" id="p{{period.id}}_s{{salon.id}}">
 						<div class="curse-div">
 							<div class="data-assign">
 								<span class="code sistemas">2808 <a href="#" title="Ver datos del curso">👁️</a></span>
@@ -25,19 +25,6 @@
 								<span class="teacher">👨‍🏫profesor</span>
 								<span class="status" title="Ver datos del curso">⚠️</span>
 							</div>
-						</div>
-					</td>
-				</tr>
-				<tr id="period{{i}}" *ngIf="i==6">
-					<td scope="row" class="period-cell table-dark">{{period.start}} - {{period.end}}</td>
-					<td class="salon-cell table-dark" colspan="22">
-						<div class="break-div">
-							<span class="break">R</span>
-							<span class="break">E</span>
-							<span class="break">C</span>
-							<span class="break">E</span>
-							<span class="break">S</span>
-							<span class="break">O</span>
 						</div>
 					</td>
 				</tr>
