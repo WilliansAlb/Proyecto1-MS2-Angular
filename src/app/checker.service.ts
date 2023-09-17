@@ -14,7 +14,7 @@ export class CheckerService {
   }
 
   getSchedule(){
-    return this.http.get('http://localhost:4200/api/GenorarioBackend/generateSchedule?type=getSalons');
+    return this.http.get('http://localhost:4200/api/GenorarioBackend/provider?type=schedule');
   }
 
   getParameter(){

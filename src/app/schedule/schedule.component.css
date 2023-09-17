@@ -130,6 +130,10 @@ th{
 	background-color: #ff9900;
 }
 
+.comun{
+	background-color: skyblue;
+}
+
 .civil{
 	background-color: #ff0000;
 }
@@ -208,4 +212,12 @@ a:hover, .status:hover{
 
 .table{
 	margin: 0 !important;
+}
+
+i{
+	font-family: 'Font Awesome 6 Free';
+}
+
+.available{
+	background-color: #f8f9fa;
 }

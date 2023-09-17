@@ -109,6 +109,5 @@ export class CreatorComponent implements OnInit {
         var data = [{"type":"generate","data":[{"name":generateScheduleName.value,"priority":selectPriority.value,"curses":values}]}];
         console.log(data);
         
-        
     }
 }

@@ -1,32 +1,48 @@
 <div class="welcome-schedule" style="padding-top: 1em; padding-bottom: 0.5em;">
-	<p class="h4">Horario Generado <small class="text-muted">Prioridades <span title="Por capacidad de salones">🫂</span>
-		<span title="Por contratación de profesores">👨‍🏫</span><span title="Por cursos disponibles">📖</span></small></p>
+	<p class="h4">Horario Generado <small class="text-muted">Prioridades <span
+				title="Por capacidad de salones">🫂</span>
+			<span title="Por contratación de profesores">👨‍🏫</span><span
+				title="Por cursos disponibles">📖</span></small></p>
 </div>
 <div id="schedule-table">
 	<table class="table table-bordered border-primary">
 		<thead>
 			<tr class="table-light">
 				<th class="label-period" scope="col">Periodo / Salon</th>
-				<th scope="col" *ngFor="let salon of salons; let i = index">{{salon.nombre}}</th>
+				<th scope="col" *ngFor="let salon of salons; let i = index">{{salon.name_salon}}</th>
 			</tr>
 		</thead>
 		<tbody>
 			<ng-container *ngFor="let period of periods; let i = index">
 				<tr id="period{{i}}">
 					<td scope="row" class="period-cell table-dark label-period">{{period.start}} - {{period.end}}</td>
-					<td class="salon-cell table-primary" *ngFor="let salon of salons; let s = index" id="p{{period.id}}_s{{salon.id}}">
-						<div class="curse-div">
-							<div class="data-assign">
-								<span class="code sistemas">2808 <a href="#" title="Ver datos del curso">👁️</a></span>
-								<span class="name">Sistemas Aplicados 2</span>
-							</div>
-							<div class="data-assign">
-								<span class="students">🎓50</span>
-								<span class="teacher">👨‍🏫profesor</span>
-								<span class="status" title="Ver datos del curso">⚠️</span>
-							</div>
-						</div>
-					</td>
+					<ng-container *ngFor="let salon of salons; let s = index">
+						<ng-container *ngIf="salon.assign[i]!=null">
+							<td [class.civil]="salon.assign[i].curse.area_curse == 3"
+							[class.sistemas]="salon.assign[i].curse.area_curse == 2" class="salon-cell table-primary" id="p{{period.id}}_s{{salon.id_salon}}">
+								<div class="curse-div">
+									<div class="data-assign">
+										<span class="code">{{salon.assign[i].curse.code_curse}}
+											<a href="#" title="Ver datos del curso">👁️</a></span>
+										<span class="name">{{salon.assign[i].curse.abbr_curse}}</span>
+										<span class="code">{{salon.assign[i].curse.semester_curse}}</span>
+									</div>
+									<div class="data-assign">
+										<span class="students"><i
+												class="fas fa-graduation-cap"></i>{{salon.assign[i].curse.assigned_students}}</span>
+										<span class="teacher"><i
+												class="fas fa-chalkboard-teacher"></i>{{salon.assign[i].teacher.alter_teacher}}</span>
+										<span class="status" *ngIf="salon.assign[i].status == 0" title="Ver datos del curso"><i
+												class="fas fa-exclamation-triangle"></i></span>
+									</div>
+								</div>
+							</td>
+						</ng-container>
+						
+						<ng-container *ngIf="salon.assign[i]==null">
+							<td class="salon-cell table-primary available" id="p{{period.id}}_s{{salon.id_salon}}"></td>
+						</ng-container>
+					</ng-container>
 				</tr>
 			</ng-container>
 		</tbody>
