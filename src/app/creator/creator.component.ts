@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckerService } from '../checker.service';
 import { LoaderService } from '../loader.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-creator',
@@ -13,7 +14,7 @@ export class CreatorComponent implements OnInit {
     priorityCurses: any = [];
     loadChanges = false;
 
-    constructor(private provider: CheckerService, private loader: LoaderService) { }
+    constructor(private provider: CheckerService, private loader: LoaderService, private router: Router) { }
     ngOnInit() {
         this.provider.getParameter().subscribe(
             (response) => {
@@ -91,23 +92,31 @@ export class CreatorComponent implements OnInit {
         const indexToDelete = this.priorityCurses.indexOf(element.title);
         if (indexToDelete !== -1) {
             this.priorityCurses.splice(indexToDelete, 1); // Elimina 1 elemento a partir del índice dado
-        } 
+        }
     }
 
-    sendGenerate(){
+    sendGenerate() {
         var generateScheduleName = document.getElementById("generate-schedule-name") as HTMLInputElement;
         var selectPriority = document.getElementById("select-priority") as HTMLSelectElement;
-        var spans:any = document.getElementsByClassName("curse-tag");
+        var spans: any = document.getElementsByClassName("curse-tag");
         var values = "";
         for (let i = 0; i < spans.length; i++) {
             const element = spans[i].title;
-            values+= element.split("-")[0];
-            if (i!=spans.length-1){
-                values+=",";
+            values += element.split("-")[0];
+            if (i != spans.length - 1) {
+                values += ",";
             }
         }
-        var data = [{"type":"generate","data":[{"name":generateScheduleName.value,"priority":selectPriority.value,"curses":values}]}];
-        console.log(data);
-        
+        var data = [{ "type": "generate", "data": [{ "name": generateScheduleName.value, "priority": selectPriority.value, "curses": values }] }];
+
+        this.loader.sendParameterData(data).subscribe(
+            (response) => {
+                let id_schedule = Object(response)['id'];
+                this.router.navigate(['/schedule/'+id_schedule]);
+            },
+            (error) => {
+                console.error('Error sending data:', error);
+            }
+        );
     }
 }

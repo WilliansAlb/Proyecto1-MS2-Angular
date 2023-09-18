@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoaderService } from '../loader.service';
 import { CheckerService } from '../checker.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-schedule',
@@ -8,6 +9,28 @@ import { CheckerService } from '../checker.service';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
+  description_parameters = [{
+    description:"Valor por asignación", class:"fa fa-graduation-cap"
+  },{
+    description:"Valor por profesores", class:"fa fa-person-chalkboard"
+  },{
+    description:"Valor por salones", class:"fa fa-school"
+  },{
+    description:"Valor por Sistemas", class:"fa fa-terminal"
+  },{
+    description:"Valor por Civil", class:"fa fa-helmet-safety"
+  },{
+    description:"Valor por Mecanica", class:"fa fa-wrench"
+  },{
+    description:"Valor por Industrial", class:"fa fa-industry"
+  },{
+    description:"Valor por Mecanica Industrial", class:"fa fa-gears"
+  },{
+    description:"Valor Semestre Desfasado", class:"fa fa-percent"
+  }];
+  parameters_used = [{
+    id_parameter: -1, factor: -1
+  }];
   periods = [{
     id: '1', start: '13:40', end: '14:30'
   }, {
@@ -27,6 +50,15 @@ export class ScheduleComponent implements OnInit {
   }, {
     id: '9', start: '20:20', end: '21:10'
   }];
+  efficienty = 0.0;
+  load = false;
+  showWarnings = false;
+  dataSchedule = false;
+  id_schedule = -1;
+  date_schedule = "";
+  name_schedule = "";
+
+  @Input() id?: any;
   salons = [{
     "id_salon": 1,
     "name_salon": "Aula 1",
@@ -91,16 +123,41 @@ export class ScheduleComponent implements OnInit {
       }]
   }];
 
-  constructor(private loader: LoaderService, private areaS: CheckerService) { }
+  constructor(private loader: LoaderService, private areaS: CheckerService, private route: ActivatedRoute) {
+    route.paramMap.subscribe((params) => console.log(params));
+  }
 
   ngOnInit() {
-    this.areaS.getSchedule().subscribe(
-      (response) => {
-        this.salons = Object(response)['schedule'];
-      },
-      (error) => {
-        console.error('Error sending data:', error);
-      }
-    );
+    if (this.id == 0 || this.id == 'random') {
+      this.areaS.getSchedule().subscribe(
+        (response) => {
+          this.salons = Object(response)['schedule'];
+          this.efficienty = (Object(response)['efficienty']).toFixed(2);
+          this.parameters_used = Object(response)['parameters'];
+          this.load = true;
+        },
+        (error) => {
+          console.error('Error sending data:', error);
+        }
+      );
+    } else {
+      this.areaS.getScheduleForId(this.id).subscribe(
+        (response) => {
+          this.salons = Object(response)['schedule'];
+          var temp = Object(response)['dataSchedule'];
+          this.parameters_used = Object(response)['parameters'];
+          this.name_schedule = temp.name_schedule;
+          this.id_schedule = temp.id_schedule;
+          this.date_schedule = temp.date_schedule;
+          this.efficienty = temp.efficiency_schedule.toFixed(2);
+          this.load = true;
+          this.dataSchedule = true;
+        },
+        (error) => {
+          console.error('Error sending data:', error);
+        }
+      );
+    }
+
   }
 }

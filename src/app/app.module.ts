@@ -9,6 +9,7 @@ import { CreatorComponent } from './creator/creator.component';
 import { StartComponent } from './start/start.component';
 import { HttpClientModule } from '@angular/common/http';
 import { checkerGuard } from './checker.guard';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { checkerGuard } from './checker.guard';
     LoaderComponent,
     ScheduleComponent,
     CreatorComponent,
-    StartComponent
+    StartComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

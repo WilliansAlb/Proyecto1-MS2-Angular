@@ -19,10 +19,7 @@
 						<div id="flush-collapseOne" class="accordion-collapse collapse"
 							data-bs-parent="#accordionFlushExample">
 							<div class="accordion-body">
-								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
-										name="hiringHours" id="hiringHours" (change)="changeValue($event, 0)"
-										[value]="parameters[0]"> al peso del curso que
-									necesite de verificar horarios de contratación.</p>
+								<p class="lead">Este opción hará que se asignen primero los profesores y los turnos que se les acomoda a los mismos</p>
 							</div>
 						</div>
 					</div>
@@ -37,10 +34,7 @@
 						<div id="flush-collapseTwo" class="accordion-collapse collapse"
 							data-bs-parent="#accordionFlushExample">
 							<div class="accordion-body">
-								<p class="lead">Este tipo de prioridad tiene por defecto la suma de <input type="number"
-										name="salonCapacity" id="salonCapacity" (change)="changeValue($event, 1)"
-										[value]="parameters[1]"> al peso del curso que
-									necesite de verificar la capacidad de un unico salon.</p>
+								<p class="lead">Esta opción hará que se asignen primero los salones y los turnos que se les acomoda a los mismos</p>
 							</div>
 						</div>
 					</div>
@@ -188,7 +182,6 @@
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="select-priority">Prioridades</label>
 					<select class="form-select" id="select-priority">
-						<option value="0">Ninguna</option>
 						<option value="1">Por horario de contratación</option>
 						<option value="2">Por capacidad de salones</option>
 					</select>

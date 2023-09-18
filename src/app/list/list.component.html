@@ -1,0 +1,31 @@
+<ng-container *ngIf="load">
+	<div class="list-container">
+		<h2>Listado de Horarios</h2>
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>FECHA</th>
+					<th>EFICIENCIA</th>
+					<th>PARAMETROS</th>
+					<th>VER</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let schedule of schedules">
+					<th scope="row">{{schedule.id_schedule}}</th>
+					<td>{{schedule.name_schedule}}</td>
+					<td>{{schedule.date_schedule}}</td>
+					<td>{{schedule.efficiency_schedule}}</td>
+					<td>
+						<div class="parameters-used" *ngIf="schedule.parameters_used">
+							<span *ngFor="let parameter of schedule.parameters_used"><i class="parameter-icon" title="{{description_parameters[parameter.id_parameter-3].description}}" class="{{description_parameters[parameter.id_parameter-3].class}}"></i> {{parameter.factor}}</span>
+						</div>
+					</td>
+					<td><a routerLink="/schedule/{{schedule.id_schedule}}"><i class="fa fa-eye"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</ng-container>

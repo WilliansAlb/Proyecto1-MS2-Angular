@@ -17,7 +17,10 @@ export class LoaderService {
     return this.http.post(this.servletUrl,data);
   }
 
-  
+  sendData(data: any) {
+    return this.http.post(this.servletUrl,data);
+  }
+
   sendParameterData(data: any) {
     return this.http.post(this.servletUrl,data);
   }
